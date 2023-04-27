@@ -51,8 +51,7 @@ function App() {
   }, [contract])
 
   return (
-    <>
-    <div className='h-screen w-full bg-gray-800'>
+    <div className='h-full w-full bg-gray-800'>
       <div className='p-4 w-full h-full'>
         {storage && (
           <Card className='w-fit absolute'>
@@ -66,7 +65,7 @@ function App() {
         )}
         {entrypoints && (
           <div className='w-full h-full flex justify-center items-center'>
-            <Card className='w-1/5'>
+            <Card className='w-2/5'>
               <>
               {!entrypoint && entrypoints.map(([name, type], index) => (
                 <div className='flex justify-between' key={name}>
@@ -113,6 +112,11 @@ function App() {
                   <p className='text-red-500'>{JSON.stringify(error)}</p>
                 </div>
               )}
+              {recentOp && (
+                <div>
+                  <p className='text-green-500'>{JSON.stringify(recentOp.raw)}</p>
+                </div>
+              )}
               </>
             </Card>
           </div>
@@ -120,7 +124,6 @@ function App() {
       </div>
       
     </div>
-    </>
   );
 }
 
