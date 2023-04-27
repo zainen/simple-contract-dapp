@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 
-module.exports = function override(config) {
+module.exports = function override(config, env) {
     const fallback = config.resolve.fallback || {};
     config.ignoreWarnings = [/Failed to parse source map/];
     Object.assign(fallback, {

@@ -1,0 +1,44 @@
+{ parameter (or (or (int %decrement) (int %increment)) (string %saveName)) ;
+  storage (pair (pair (int %count) (string %name)) (int %numberOfInteractions)) ;
+  code { LAMBDA
+           (pair (pair int string) int)
+           (pair (pair int string) int)
+           { PUSH int 1 ; DUP 2 ; CDR ; ADD ; SWAP ; CAR ; PAIR } ;
+         SWAP ;
+         UNPAIR ;
+         IF_LEFT
+           { IF_LEFT
+               { SWAP ;
+                 DIG 2 ;
+                 SWAP ;
+                 EXEC ;
+                 DUP ;
+                 CDR ;
+                 DUP 2 ;
+                 CAR ;
+                 CDR ;
+                 DIG 3 ;
+                 DIG 3 ;
+                 CAR ;
+                 CAR ;
+                 SUB }
+               { SWAP ;
+                 DIG 2 ;
+                 SWAP ;
+                 EXEC ;
+                 DUP ;
+                 CDR ;
+                 DUP 2 ;
+                 CAR ;
+                 CDR ;
+                 DIG 3 ;
+                 DIG 3 ;
+                 CAR ;
+                 CAR ;
+                 ADD } }
+           { SWAP ; DIG 2 ; SWAP ; EXEC ; DUP ; CDR ; DUG 2 ; CAR ; CAR } ;
+         PAIR ;
+         PAIR ;
+         NIL operation ;
+         PAIR } }
+
